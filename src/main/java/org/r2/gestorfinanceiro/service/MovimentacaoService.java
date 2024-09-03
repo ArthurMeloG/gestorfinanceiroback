@@ -1,6 +1,8 @@
 package org.r2.gestorfinanceiro.service;
 
 
+
+import com.webcohesion.ofx4j.io.*;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -15,6 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -97,4 +100,28 @@ public class MovimentacaoService {
 
         return movimentacao;
     }
+
+//    public void saveMovimentacoesFromOfx(InputStream inputStream) {
+//        try {
+//            OfxReader ofxReader = new OfxReader(inputStream);
+//            AbstractStatement statement = ofxReader.read();
+//            List<StatementTransaction> transactions = statement.getTransactions();
+//
+//            List<Movimentacao> movimentacoes = transactions.stream()
+//                    .map(tx -> new Movimentacao(
+//                            new Date(tx.getDatePosted().getTime()),  // Ajuste conforme necessário
+//                            // Use um método para encontrar a Categoria, se necessário
+//                            new Categoria(),
+//                            tx.getMemo(),
+//                            tx.getAmount().floatValue(),
+//                            tx.getCheckNumber() != null ? tx.getCheckNumber().getBytes() : null))
+//                    .collect(Collectors.toList());
+//
+//            // Salve as movimentações no repositório
+//            movimentacaoRepository.saveAll(movimentacoes);
+//        } catch (Exception e) {
+//            // Lidar com exceções adequadamente
+//            e.printStackTrace();
+//        }
+//    }
 }

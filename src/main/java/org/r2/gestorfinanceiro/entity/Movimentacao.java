@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Getter
@@ -30,4 +31,6 @@ public class Movimentacao {
     @Column
     private byte[] anexoComprovante;
 
+    @ManyToMany
+    private List<Usuario> usuario;
 }

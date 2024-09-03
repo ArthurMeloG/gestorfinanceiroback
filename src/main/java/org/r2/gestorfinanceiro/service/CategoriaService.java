@@ -38,6 +38,8 @@ public class CategoriaService {
         categoriaRepository.delete(categoria);
     }
 
+
+
     private CategoriaDTO categoriaToDTO(Categoria categoria) {
         return new CategoriaDTO(categoria.getId(), categoria.getNome(), categoria.isAtivo());
     }
