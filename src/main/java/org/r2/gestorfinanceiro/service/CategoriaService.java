@@ -28,7 +28,8 @@ public class CategoriaService {
         return response.map(this::categoriaToDTO).orElse(null);
     }
 
-    public CategoriaDTO save(CategoriaDTO categoria) {
+    public CategoriaDTO save(CategoriaDTO categoriaDTO) {
+        var categoria = categoriaDTOToCategoria(categoriaDTO);
         var response = categoriaRepository.save(categoria);
         return this.categoriaToDTO(response);
     }

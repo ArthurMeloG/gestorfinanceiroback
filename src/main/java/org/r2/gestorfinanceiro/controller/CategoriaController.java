@@ -25,13 +25,14 @@ public class CategoriaController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Categoria>> listar() {
-        List<Categoria> categorias = categoriaService.findAll();
+    public ResponseEntity<List<CategoriaDTO>> listar() {
+        List<CategoriaDTO> categorias = categoriaService.findAll();
         return ResponseEntity.ok(categorias);
     }
 
     @PostMapping(consumes = "application/json", produces = "application/json")
-    public ResponseEntity<Categoria> add(@RequestBody CategoriaDTO categoriaDTO) {
+    public ResponseEntity<CategoriaDTO> add(@RequestBody CategoriaDTO categoriaDTO) {
         return ResponseEntity.ok(categoriaService.save(categoriaDTO));
     }
+
 }
